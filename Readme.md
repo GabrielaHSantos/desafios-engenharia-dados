@@ -36,16 +36,19 @@ GabrielaSantos_DesafioTecnico/
 ## Execução com Docker
 
 ### Pré-requisitos
+
 - Docker instalado
 - Arquivo de credenciais do Google Sheets (para o desafio 1)
 
 ### Executar ETL Yahoo Finance
+
 ```bash
 docker build -t desafio-tecnico .
 docker run -v $(pwd)/credentials:/app/credentials desafio-tecnico
 ```
 
 ### Executar Limpeza de Dados
+
 ```bash
 docker run desafio-tecnico python limpeza_dados/limpeza.py
 ```
@@ -53,6 +56,7 @@ docker run desafio-tecnico python limpeza_dados/limpeza.py
 ## Desafio 1: ETL com Yahoo Finance
 
 ### Objetivo
+
 Desenvolver um pipeline ETL completo para extrair dados financeiros do Yahoo Finance, enriquecer as informações e carregar os resultados em uma planilha Google Sheets.
 
 ### Arquitetura
@@ -63,7 +67,7 @@ graph TD
     B --> C[Enriquecimento]
     C --> D[Transformação]
     D --> E[Google Sheets]
-    
+
     B --> F[Seleção Top Market Cap]
     C --> G[Dados Históricos]
     C --> H[Indicadores Técnicos]
@@ -80,12 +84,13 @@ graph TD
 
 ### Evidências
 
-| Componente | Evidência |
-|------------|-----------|
-| Planilha Final | ![Planilha Yahoo Finance](evidencias/planilhayahoofinance.png) |
-| Execução Terminal | ![Terminal Yahoo](evidencias/terminal_desafio1yahoo.png) |
+| Componente        | Evidência                                                      |
+| ----------------- | -------------------------------------------------------------- |
+| Planilha Final    | ![Planilha Yahoo Finance](evidencias/planilhayahoofinance.png) |
+| Execução Terminal | ![Terminal Yahoo](evidencias/terminal_desafio1yahoo.png)       |
 
 ### Resultados Obtidos
+
 - Pipeline ETL funcional e automatizado
 - Integração bem-sucedida com APIs externas
 - Dados estruturados e prontos para análise
@@ -94,6 +99,7 @@ graph TD
 ## Desafio 2: Proposta de Automação em Nuvem (GCP)
 
 ### Objetivo
+
 Projetar uma arquitetura de automação ETL utilizando serviços do Google Cloud Platform, focando em escalabilidade, confiabilidade e eficiência de custos.
 
 ### Arquitetura Proposta
@@ -103,21 +109,25 @@ Projetar uma arquitetura de automação ETL utilizando serviços do Google Cloud
 ### Componentes da Solução
 
 **Orquestração e Processamento:**
+
 - Cloud Functions para execução serverless
 - Cloud Scheduler para agendamento automático
 - Dataflow para processamento de grandes volumes
 
 **Armazenamento e Dados:**
+
 - Cloud Storage para data lake
 - BigQuery para data warehouse
 - Cloud SQL para dados transacionais
 
 **Monitoramento e Segurança:**
+
 - Cloud Monitoring para observabilidade
 - Cloud Logging para auditoria
 - IAM para controle de acesso
 
 ### Benefícios da Arquitetura
+
 - **Escalabilidade**: Ajuste automático de recursos
 - **Confiabilidade**: Alta disponibilidade e recuperação
 - **Eficiência**: Otimização de custos com pay-per-use
@@ -126,6 +136,7 @@ Projetar uma arquitetura de automação ETL utilizando serviços do Google Cloud
 ## Desafio 3: Limpeza e Qualidade de Dados
 
 ### Objetivo
+
 Implementar um sistema robusto de limpeza de dados para tratar inconsistências, duplicatas e problemas de qualidade em datasets reais.
 
 ### Arquitetura do Sistema
@@ -139,36 +150,40 @@ graph TD
     E --> F[Enriquecimento SKU]
     F --> G[Validação Final]
     G --> H[Dados Limpos]
-    
+
     I[Base SKU] --> F
 ```
 
 ### Funcionalidades Implementadas
 
 **Limpeza Básica:**
+
 - Remoção de duplicatas
 - Tratamento de valores nulos
 - Padronização de formatos
 
 **Padronização Avançada:**
+
 - Normalização de texto
 - Fuzzy matching para correspondência
 - Validação de integridade
 
 **Enriquecimento:**
+
 - Associação com dados de SKU
 - Cálculo de métricas de qualidade
 - Relatórios de transformação
 
 ### Evidências do Processo
 
-| Etapa | Evidência |
-|-------|-----------|
-| Dados Originais | ![Tabela Suja](evidencias/tabela_suja.png) |
-| Dados Processados | ![Tabela Limpa](evidencias/tabela_limpa(normalizada).png) |
+| Etapa             | Evidência                                                      |
+| ----------------- | -------------------------------------------------------------- |
+| Dados Originais   | ![Tabela Suja](evidencias/tabela_suja.png)                     |
+| Dados Processados | ![Tabela Limpa](<evidencias/tabela_limpa(normalizada).png>)    |
 | Execução Completa | ![Terminal Limpeza](evidencias/terminal_limpezadadospart1.png) |
 
 ### Métricas de Qualidade
+
 - **Taxa de Limpeza**: 95% dos registros processados com sucesso
 - **Redução de Duplicatas**: 87% de duplicatas identificadas e removidas
 - **Padronização**: 100% dos campos textuais normalizados
@@ -177,21 +192,25 @@ graph TD
 ## Stack Tecnológico
 
 ### Linguagens e Frameworks
+
 - **Python 3.9+**: Linguagem principal
 - **Pandas**: Manipulação de dados
 - **NumPy**: Computação numérica
 
 ### APIs e Integrações
+
 - **yfinance**: Dados financeiros
 - **gspread**: Google Sheets API
 - **rapidfuzz**: Fuzzy matching
 
 ### Infraestrutura
+
 - **Docker**: Containerização
 - **Google Cloud Platform**: Serviços em nuvem
 - **Git**: Controle de versão
 
 ### Ferramentas de Qualidade
+
 - **Logging**: Sistema de logs estruturado
 - **Error Handling**: Tratamento robusto de exceções
 - **Data Validation**: Validação de integridade
@@ -201,27 +220,32 @@ graph TD
 ### Aspectos Técnicos Destacados
 
 **Engenharia de Dados:**
+
 - Implementação de pipelines ETL robustos e escaláveis
 - Integração eficiente com APIs externas e serviços cloud
 - Tratamento adequado de diferentes formatos e fontes de dados
 
 **Qualidade de Código:**
+
 - Estrutura modular e reutilizável
 - Documentação clara e comentários explicativos
 - Tratamento abrangente de erros e edge cases
 
 **Arquitetura Cloud:**
+
 - Proposta bem fundamentada para automação em nuvem
 - Consideração de aspectos de escalabilidade e custos
 - Uso adequado de serviços gerenciados
 
 ### Desafios Superados
+
 - Integração complexa com múltiplas APIs
 - Tratamento de dados inconsistentes e sujos
 - Otimização de performance para grandes volumes
 - Implementação de logging e monitoramento
 
 ### Aprendizados Obtidos
+
 - Importância da validação de dados em todas as etapas
 - Benefícios da containerização para reprodutibilidade
 - Valor da documentação técnica detalhada
@@ -237,15 +261,14 @@ Este projeto demonstra competências sólidas em:
 - **Boas Práticas**: Código limpo, documentado e containerizado
 
 ### Métricas de Sucesso
+
 - 100% dos desafios implementados e funcionais
 - Cobertura completa de tratamento de erros
 - Documentação técnica abrangente
 - Evidências visuais de todos os processos
 
-
-
 ---
 
 **Desenvolvido por:** Gabriela Santos  
-**LinkedIn:** [linkedin.com/in/gabriela-santos](https://linkedin.com/in/gabriela-santos)  
-**GitHub:** [github.com/gabriela-santos](https://github.com/gabriela-santos)
+**LinkedIn:** [linkedin.com/in/gabriela-santos](https://www.linkedin.com/in/gabriela-santos-383689350/)  
+**GitHub:** [github.com/gabriela-santos](https://github.com/GabrielaHSantos)
